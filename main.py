@@ -2,8 +2,6 @@
 Binary to Decimal Convertor
 """
 
-INVALID = [2, 3, 4, 5, 6, 7, 8, 9]  # values impossible in binary
-
 while True:
     try:
         char_base2 = []
@@ -15,12 +13,12 @@ while True:
 
         # binary string converted to list of chars
         for char in base2[0:len(base2)]:
-            if int(char) in INVALID:
-                # if any char is not 0 or 1, raise exception
-                raise Exception("String contains non-binary values")
+            if int(char) == 1 or int(char) == 0:
+                char_base2.append(int(char))
 
             else:
-                char_base2.append(int(char))
+                # if any char is not 0 or 1, raise exception
+                raise Exception("String contains non-binary values")
 
         # handled in reverse for ease
         char_base2.reverse()
