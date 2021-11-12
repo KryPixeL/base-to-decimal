@@ -7,6 +7,10 @@ while True:
         char_base = []
 
         base_increase = int(input("Base: "))
+
+        if base_increase > 10:
+            raise Exception("Base value may not exceed 10")
+
         base = input("Insert base string: ")
 
         # non-numerical numbers present if conversion returns false
