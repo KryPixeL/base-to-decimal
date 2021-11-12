@@ -1,51 +1,46 @@
 """
-Binary to Decimal Convertor
+Base to Decimal Convertor
 """
 
 while True:
     try:
-        char_base2 = []
-        base2 = input("Insert binary string: ")
+        char_base = []
+
+        base_increase = int(input("Base: "))
+        base = input("Insert base string: ")
 
         # non-numerical numbers present if conversion returns false
-        if not base2.isnumeric():
-            raise Exception("String is not numeric")
+        if not base.isnumeric():
+            raise Exception("Base string may not contain non-numeric values")
 
-        # binary string converted to list of chars
-        for char in base2[0:len(base2)]:
-            if int(char) == 1 or int(char) == 0:
-                char_base2.append(int(char))
+        # base string converted to list of chars
+        for char in base:
+            if int(char) in range(0, base_increase):
+                char_base.append(int(char))
 
             else:
-                # if any char is not 0 or 1, raise exception
-                raise Exception("String contains non-binary values")
+                # raise exception if any char defies base domain
+                raise Exception("String values not within base domain")
 
         # handled in reverse for ease
-        char_base2.reverse()
-        on_bit_list = []
-
-        for i, j in enumerate(char_base2):
-            # keep list of every activated bit
-            if j == 1:
-                on_bit_list.append(i)
+        char_base.reverse()
 
         value = 1
         value_list = []
 
-        # get value of each char in binary string
-        for char in char_base2:
+        # get value of each char in base string
+        for char in char_base:
             value_list.append(value)
-            value *= 2
+            value *= base_increase
 
-        base10 = 0
+        decimal = 0
 
-        # for every activated bit
-        for on_index in on_bit_list:
-            # add activated bit's value to sum
-            base10 += value_list[on_index]
+        # add values for each char in string to sum
+        for i, j in enumerate(char_base):
+            decimal += value_list[i] * j
 
-        # return binary and decimal conversion
-        print("\n" + base2, "->", base10, "\n")
+        # return base string and decimal conversion
+        print("\n" + base, "->", decimal, "\n")
 
     except Exception as e:
-        print(e)  # return a raised exception
+        print(e)
