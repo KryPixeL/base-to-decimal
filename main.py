@@ -9,13 +9,13 @@ while True:
         base_increase = int(input("Base: "))
 
         if base_increase > 10:
-            raise Exception("Base value may not exceed 10")
+            raise Exception("Base value may not exceed 10\n")
 
         base = input("Insert base string: ")
 
         # non-numerical numbers present if conversion returns false
         if not base.isnumeric():
-            raise Exception("Base string may not contain non-numeric values")
+            raise Exception("Base string may not contain non-numeric values\n")
 
         # base string converted to list of chars
         for char in base:
@@ -24,7 +24,7 @@ while True:
 
             else:
                 # raise exception if any char defies base domain
-                raise Exception("String values not within base domain")
+                raise Exception("String values not within base domain\n")
 
         # handled in reverse for ease
         char_base.reverse()
